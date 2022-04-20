@@ -14,7 +14,14 @@ function App() {
     setUsers(addedData);
   };
 
-  const hadleDelete = (name) => {};
+  const hadleDelete = (name) => {
+    users.map((user) => {
+      if (user.name === name) {
+        const remainedUsers = users.splice(name, 1);
+        return remainedUsers;
+      }
+    });
+  };
 
   return (
     <div>
