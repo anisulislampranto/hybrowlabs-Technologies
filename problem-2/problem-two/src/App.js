@@ -14,9 +14,14 @@ function App() {
     setUsers(addedData);
   };
 
-  const hadleDelete = (name) => {
-    const remainingUser = users.filter((user) => user.name !== name);
-    setUsers(remainingUser);
+  // const hadleDelete = (name) => {
+  //   const remainingUser = users.filter((user) => user.name !== name);
+  //   setUsers(remainingUser);
+  // };
+
+  const hadleDelete = (index) => {
+    const remainingUser = users.splice(index, 1);
+    setUsers([...users], remainingUser);
   };
 
   return (
@@ -37,13 +42,13 @@ function App() {
         <tbody>
           {users.map((user, index) => (
             <tr>
-              <td style={{ textAlign: "center" }}>
+              <td key={index} style={{ textAlign: "center" }}>
                 {user.name}
                 <button
-                  onClick={() => hadleDelete(user.name)}
+                  onClick={() => hadleDelete(index)}
                   style={{ marginLeft: "20px" }}
                 >
-                  Delete
+                  Delete {index}
                 </button>
               </td>
             </tr>
