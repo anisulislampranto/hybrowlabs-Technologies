@@ -15,12 +15,8 @@ function App() {
   };
 
   const hadleDelete = (name) => {
-    users.map((user) => {
-      if (user.name === name) {
-        const remainedUsers = users.splice(name, 1);
-        return remainedUsers;
-      }
-    });
+    const remainingUser = users.filter((user) => user.name !== name);
+    setUsers(remainingUser);
   };
 
   return (
@@ -35,11 +31,11 @@ function App() {
       <table>
         <thead>
           <tr>
-            <th>name</th>
+            <th style={{ textAlign: "center" }}>name</th>
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
+          {users.map((user, index) => (
             <tr>
               <td style={{ textAlign: "center" }}>
                 {user.name}
